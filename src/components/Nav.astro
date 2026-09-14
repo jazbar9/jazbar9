@@ -39,11 +39,55 @@ const otherHref = `${basePath}${target.endsWith('/') || target === '' ? target :
           </a>
         ))
       }
-      <div class="lang-switch">
+      <div class="lang-switch desktop-only">
         <a href={otherHref} aria-label="Switch language">
           {other.toUpperCase()}
         </a>
       </div>
     </nav>
+    <div class="nav-mobile">
+      <div class="lang-switch">
+        <a href={otherHref} aria-label="Switch language">
+          {other.toUpperCase()}
+        </a>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
+  <nav class="mobile-menu" id="mobile-menu" hidden>
+    {
+      links.map((l) => (
+        <a href={l.to} aria-current={currentPath === l.to ? 'page' : undefined}>
+          {l.label}
+        </a>
+      ))
+    }
+  </nav>
 </header>
+
+<script>
+  function closeMenu() {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+    menu.setAttribute('hidden', '');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.classList.remove('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    const toggle = (e.target as HTMLElement).closest('#menu-toggle');
+    if (!toggle) return;
+    const menu = document.getElementById('mobile-menu');
+    if (!menu) return;
+    const open = menu.toggleAttribute('hidden');
+    toggle.setAttribute('aria-expanded', String(!open));
+    toggle.classList.toggle('open', !open);
+  });
+
+  document.addEventListener('astro:page-load', closeMenu);
+</script>

@@ -21,7 +21,7 @@ const metric = project.source === 'huggingface' ? formatMetric(project.downloads
 const metricLabel = project.source === 'huggingface' ? 'downloads' : 'stars';
 ---
 
-<article class="card" data-source={project.source} data-featured={project.featured ? 'true' : 'false'}>
+<article class="card rise" data-source={project.source} data-featured={project.featured ? 'true' : 'false'}>
   <div class="card-top">
     <span class="src-badge badge">{project.source === 'huggingface' ? 'HF' : 'GH'}</span>
     {project.featured && <span class="badge badge-featured">{dict.projects.featured}</span>}

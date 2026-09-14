@@ -22,7 +22,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 4);
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head rise">
         <div>
           <div class="section-sub mono"><span class="dot"></span>01</div>
           <h2 class="section-title">{dict.home.aboutTitle}</h2>
@@ -31,9 +31,9 @@ const featured = projects.filter((p) => p.featured).slice(0, 4);
           {dict.home.moreAbout} →
         </a>
       </div>
-      <p class="hero-sub">{dict.home.aboutText}</p>
+      <p class="hero-sub rise">{dict.home.aboutText}</p>
 
-      <div class="stack">
+      <div class="stack rise-1">
         {Object.values(dict.about.skills).map((cat) => (
           <div class="stack-cat">
             <h4>{cat.title}</h4>
@@ -46,9 +46,9 @@ const featured = projects.filter((p) => p.featured).slice(0, 4);
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head rise">
         <div>
           <div class="section-sub mono"><span class="dot"></span>02</div>
           <h2 class="section-title">{dict.home.sectionProjects}</h2>

@@ -53,7 +53,7 @@ const channels = [
 <BaseLayout locale={locale} title={dict.contact.title} description={dict.contact.text}>
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head rise">
         <div>
           <div class="section-sub mono"><span class="dot"></span>{dict.nav.contact}</div>
           <h1 class="section-title">{dict.contact.title}</h1>
@@ -64,7 +64,7 @@ const channels = [
       <div class="contact-grid">
         {
           channels.map((c) => (
-            <a class={`contact-card${c.warm ? ' warm' : ''}`} href={c.href} target="_blank" rel="noopener noreferrer">
+            <a class={`contact-card rise${c.warm ? ' warm' : ''}`} href={c.href} target="_blank" rel="noopener noreferrer">
               <div class="contact-icon">{c.icon}</div>
               <div>
                 <div>{c.label}</div>
@@ -75,7 +75,7 @@ const channels = [
         }
       </div>
 
-      <p class="pill" style="margin-top:2rem"><span class="dot"></span>{dict.contact.response}</p>
+      <p class="pill rise-1" style="margin-top:2rem"><span class="dot"></span>{dict.contact.response}</p>
     </div>
   </section>
 </BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import type { Locale } from '../i18n';
@@ -26,6 +27,8 @@ const publicBase = (import.meta.env.BASE_URL as string).replace(/\/?$/, '/');
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href={`${publicBase}favicon.svg`} />
     <link rel="canonical" href={Astro.url} />
+    <ClientRouter />
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <title>{fullTitle}</title>
   </head>
   <body>
@@ -36,3 +39,45 @@ const publicBase = (import.meta.env.BASE_URL as string).replace(/\/?$/, '/');
     <Footer locale={locale} />
   </body>
 </html>
+
+<script>
+  if ('IntersectionObserver' in window) {
+    const seen = new WeakSet();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    function observeRise() {
+      const items = document.querySelectorAll('.rise, .rise-1, .rise-2, .rise-3, .rise-4, .rise-5');
+      for (const el of items) {
+        if (seen.has(el)) continue;
+        seen.add(el);
+        const siblings = el.parentElement
+          ? Array.from(el.parentElement.children).filter((s) => s.matches('.rise, [class*=rise-]'))
+          : [el];
+        const idx = siblings.indexOf(el);
+        el.style.setProperty('--d', `${idx * 70}ms`);
+        observer.observe(el);
+      }
+    }
+
+    document.addEventListener('astro:page-load', observeRise);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', observeRise);
+    } else {
+      observeRise();
+    }
+  } else {
+    document
+      .querySelectorAll('.rise, .rise-1, .rise-2, .rise-3, .rise-4, .rise-5')
+      .forEach((el) => el.classList.add('in-view'));
+  }
+</script>

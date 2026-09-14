@@ -18,7 +18,7 @@ const total = projects.length;
 <BaseLayout locale={locale} title={dict.projects.title} description={dict.projects.subtitle}>
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head rise">
         <div>
           <div class="section-sub mono"><span class="dot"></span>{dict.nav.projects}</div>
           <h1 class="section-title">{dict.projects.title}</h1>
@@ -27,7 +27,7 @@ const total = projects.length;
         <span class="pill">{total} {dict.projects.count}</span>
       </div>
 
-      <div class="filters" id="filters">
+      <div class="filters rise-1" id="filters">
         <button class="filter-btn active" data-filter="all">{dict.projects.all}</button>
         <button class="filter-btn" data-filter="github">GitHub</button>
         <button class="filter-btn" data-filter="huggingface">Hugging Face</button>
