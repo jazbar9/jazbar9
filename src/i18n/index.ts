@@ -68,7 +68,7 @@ export const translations = {
       journeyTitle: 'Journey',
       journey: [
         'Started in the mining industry (4+ years), managing KPIs, safety statistics, and leading external audits (ISO 45001, SUNAFIL, OEFA) across large-scale industrial projects — where data-driven decisions had zero margin for error.',
-        'Moved into independent digital transformation work (4+ years) for clients in the US and Peru: trained as a full stack web developer and personally built e-commerce and POS solutions on WordPress, not just advised on them — integrating payments and analytics along the way.',
+        'Moved into independent digital transformation work (4+ years) for clients in the US and Peru: evolved from custom frontend development (HTML, JavaScript) and robust CMS solutions (WordPress with integrated payments and analytics) to modern web stacks (Astro, Tailwind, Vercel), personally managing server setup, domain configuration, and end-to-end deployments.',
         'Drawn to the data behind those projects, transitioned into data science through a bootcamp, building end-to-end projects with real datasets.',
         'Expanded into an ML API catalog: housing price prediction, insurance risk, and e-commerce sales forecasting.',
         'Shipped models and interactive apps on Hugging Face across NLP and computer vision.',
@@ -226,7 +226,7 @@ export const translations = {
       journeyTitle: 'Trayectoria',
       journey: [
         'Empecé en el sector minero (+4 años), gestionando KPIs, estadísticas de seguridad y liderando auditorías externas (ISO 45001, SUNAFIL, OEFA) en proyectos industriales de gran escala — donde las decisiones basadas en datos no tenían margen de error.',
-        'Pasé a trabajar de forma independiente en transformación digital (+4 años) para clientes en EEUU y Perú: me formé como desarrolladora full stack y construí personalmente soluciones de e-commerce y punto de venta en WordPress, no solo las asesoré — integrando pagos y analítica en el proceso.',
+        'Pasé a trabajar de forma independiente en transformación digital (+4 años) para clientes en EEUU y Perú: evolucioné desde el desarrollo frontend a medida (HTML, JavaScript) y soluciones CMS robustas (WordPress con pagos y analítica integrados) hasta stacks web modernos (Astro, Tailwind, Vercel), gestionando personalmente la configuración de servidores, dominios y despliegues end-to-end.',
         'Atraída por los datos detrás de esos proyectos, di el salto a la ciencia de datos a través de un bootcamp, construyendo proyectos end-to-end con datasets reales.',
         'Amplié mi trabajo a un catálogo de APIs de ML: predicción de precios de vivienda, riesgo de seguros y forecasting de ventas en e-commerce.',
         'Publiqué modelos y aplicaciones interactivas en Hugging Face, entre NLP y visión por computadora.',
