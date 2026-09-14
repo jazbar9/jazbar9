@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+}
+
+const { locale, title, description } = Astro.props;
+const dict = t(locale);
+const fullTitle = title ? `${title} · ${dict.meta.title}` : dict.meta.title;
+const publicBase = (import.meta.env.BASE_URL as string).replace(/\/?$/, '/');
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href={`${publicBase}favicon.svg`} />
+    <link rel="canonical" href={Astro.url} />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <Nav currentPath={Astro.url.pathname} locale={locale} />
+    <main>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

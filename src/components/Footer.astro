@@ -1,0 +1,24 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>{dict.footer.quote}</span>
+    <div class="footer-links">
+      <a href="https://github.com/jazbar9?tab=repositories">GitHub</a>
+      <a href="https://huggingface.co/codigo-g6">Hugging Face</a>
+      <a href={getRelativeLocaleUrl(locale, 'contact')}>{dict.nav.contact}</a>
+    </div>
+    <span>© {new Date().getFullYear()} Jazmina Sanz</span>
+  </div>
+</footer>

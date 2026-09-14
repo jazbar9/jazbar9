@@ -1,0 +1,203 @@
+[
+  {
+    "id": "github/pointofsale_retail_analytics",
+    "source": "github",
+    "title": "pointofsale_retail_analytics",
+    "slogan": "Market basket analysis on real-world POS data",
+    "description": "Data cleaning pipeline + market basket analysis on real-world restaurant POS transaction data — from raw export to actionable product-pairing insights using Python",
+    "tags": [
+      "Python",
+      "Pandas",
+      "Market Basket"
+    ],
+    "language": "Jupyter Notebook",
+    "stars": 0,
+    "url": "https://github.com/jazbar9/pointofsale_retail_analytics",
+    "featured": true,
+    "featuredOrder": 0,
+    "updated": "2026-09-11T18:17:57Z"
+  },
+  {
+    "id": "github/twitch-data-analysis-sql",
+    "source": "github",
+    "title": "twitch-data-analysis-sql",
+    "slogan": "Audience & growth metrics on top 1,000 streamers",
+    "description": "SQL analysis comparing top 1,000 Twitch streamers across two periods (2021 vs 2024) — CTEs and window functions to track audience growth and ecosystem shifts, with a dashboard published on Tableau Public.",
+    "tags": [
+      "SQL",
+      "Analytics"
+    ],
+    "stars": 0,
+    "url": "https://github.com/jazbar9/twitch-data-analysis-sql",
+    "featured": true,
+    "featuredOrder": 1,
+    "updated": "2026-09-14T12:00:42Z"
+  },
+  {
+    "id": "github/ecommerce-revenue-analytics",
+    "source": "github",
+    "title": "ecommerce-revenue-analytics",
+    "slogan": "Profitability and reverse logistics analytics",
+    "description": "SQL & Python analysis of e-commerce profitability and reverse logistics — from category-level margin analysis to a large-scale supply chain and marketing performance audit (10,999 transactions)",
+    "tags": [
+      "Python",
+      "E-commerce",
+      "Analytics"
+    ],
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/jazbar9/ecommerce-revenue-analytics",
+    "featured": true,
+    "featuredOrder": 2,
+    "updated": "2026-09-14T12:01:48Z"
+  },
+  {
+    "id": "github/ECommerce-Sales-Prediction",
+    "source": "github",
+    "title": "ECommerce-Sales-Prediction",
+    "slogan": "ML API for e-commerce sales forecasting",
+    "description": "ML sales prediction API for e-commerce — model trained on customer purchase behavior (country, time, day, month, quantity), served via Flask API and deployed as a Gradio app on Hugging Face",
+    "tags": [
+      "Python",
+      "ML API",
+      "Forecasting"
+    ],
+    "language": "Jupyter Notebook",
+    "stars": 0,
+    "url": "https://github.com/jazbar9/ECommerce-Sales-Prediction",
+    "featured": true,
+    "featuredOrder": 3,
+    "updated": "2026-09-14T12:03:12Z"
+  },
+  {
+    "id": "huggingface/jazbarr/jazbarr-toxicidad",
+    "source": "huggingface",
+    "title": "jazbarr-toxicidad",
+    "slogan": "jazbarr/jazbarr-toxicidad",
+    "description": "Hugging Face model jazbarr/jazbarr-toxicidad · pipeline: text-classification",
+    "tags": [
+      "Transformers",
+      "Text Classification",
+      "ML"
+    ],
+    "downloads": 2,
+    "likes": 0,
+    "url": "https://huggingface.co/jazbarr/jazbarr-toxicidad",
+    "featured": false,
+    "featuredOrder": -1,
+    "updated": ""
+  },
+  {
+    "id": "huggingface/codigo-g6/ecommerce-sales-hf",
+    "source": "huggingface",
+    "title": "ecommerce-sales-hf",
+    "slogan": "codigo-g6/ecommerce-sales-hf",
+    "description": "Hugging Face app codigo-g6/ecommerce-sales-hf · sdk: gradio",
+    "tags": [
+      "Gradio",
+      "ML"
+    ],
+    "downloads": 0,
+    "likes": 0,
+    "url": "https://huggingface.co/spaces/codigo-g6/ecommerce-sales-hf",
+    "featured": false,
+    "featuredOrder": -1,
+    "updated": ""
+  },
+  {
+    "id": "github/etl_inmuebles",
+    "source": "github",
+    "title": "etl_inmuebles",
+    "slogan": "scrapper para inmuebles del peru",
+    "description": "scrapper para inmuebles del peru",
+    "tags": [],
+    "stars": 0,
+    "url": "https://github.com/jazbar9/etl_inmuebles",
+    "featured": false,
+    "featuredOrder": -1,
+    "updated": "2026-03-28T16:53:22Z"
+  },
+  {
+    "id": "github/housing-api",
+    "source": "github",
+    "title": "housing-api",
+    "slogan": "api para modelo de machine learninh housing price",
+    "description": "api para modelo de machine learninh housing price",
+    "tags": [
+      "Python"
+    ],
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/jazbar9/housing-api",
+    "featured": false,
+    "featuredOrder": -1,
+    "updated": "2026-03-24T17:16:59Z"
+  },
+  {
+    "id": "huggingface/codigo-g6/housing-g6",
+    "source": "huggingface",
+    "title": "housing-g6",
+    "slogan": "codigo-g6/housing-g6",
+    "description": "Hugging Face app codigo-g6/housing-g6 · sdk: gradio",
+    "tags": [
+      "Gradio",
+      "ML"
+    ],
+    "downloads": 0,
+    "likes": 0,
+    "url": "https://huggingface.co/spaces/codigo-g6/housing-g6",
+    "featured": false,
+    "featuredOrder": -1,
+    "updated": ""
+  },
+  {
+    "id": "github/jsanz-insurance-api",
+    "source": "github",
+    "title": "jsanz-insurance-api",
+    "slogan": "api rest para modelo de machine learning insurance",
+    "description": "api rest para modelo de machine learning insurance",
+    "tags": [
+      "Python"
+    ],
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/jazbar9/jsanz-insurance-api",
+    "featured": false,
+    "featuredOrder": -1,
+    "updated": "2026-03-25T00:52:02Z"
+  },
+  {
+    "id": "huggingface/codigo-g6/neumonia_prediction",
+    "source": "huggingface",
+    "title": "neumonia_prediction",
+    "slogan": "codigo-g6/neumonia_prediction",
+    "description": "Hugging Face app codigo-g6/neumonia_prediction · sdk: gradio",
+    "tags": [
+      "Gradio",
+      "ML"
+    ],
+    "downloads": 0,
+    "likes": 0,
+    "url": "https://huggingface.co/spaces/codigo-g6/neumonia_prediction",
+    "featured": false,
+    "featuredOrder": -1,
+    "updated": ""
+  },
+  {
+    "id": "huggingface/codigo-g6/toxic-comments",
+    "source": "huggingface",
+    "title": "toxic-comments",
+    "slogan": "codigo-g6/toxic-comments",
+    "description": "Hugging Face app codigo-g6/toxic-comments · sdk: gradio",
+    "tags": [
+      "Gradio",
+      "ML"
+    ],
+    "downloads": 0,
+    "likes": 0,
+    "url": "https://huggingface.co/spaces/codigo-g6/toxic-comments",
+    "featured": false,
+    "featuredOrder": -1,
+    "updated": ""
+  }
+]

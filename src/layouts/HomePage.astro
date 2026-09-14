@@ -1,0 +1,65 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { loadProjects } from '../lib/fetchProjects';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const projects = await loadProjects();
+const featured = projects.filter((p) => p.featured).slice(0, 4);
+---
+
+<BaseLayout locale={locale} title="" description={dict.meta.description}>
+  <Hero locale={locale} projects={projects} />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-sub mono"><span class="dot"></span>01</div>
+          <h2 class="section-title">{dict.home.aboutTitle}</h2>
+        </div>
+        <a class="btn btn-ghost" href={getRelativeLocaleUrl(locale, 'about')}>
+          {dict.home.moreAbout} →
+        </a>
+      </div>
+      <p class="hero-sub">{dict.home.aboutText}</p>
+
+      <div class="stack">
+        {Object.values(dict.about.skills).map((cat) => (
+          <div class="stack-cat">
+            <h4>{cat.title}</h4>
+            <ul>
+              {cat.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-sub mono"><span class="dot"></span>02</div>
+          <h2 class="section-title">{dict.home.sectionProjects}</h2>
+        </div>
+        <a class="btn btn-ghost" href={getRelativeLocaleUrl(locale, 'projects')}>
+          {dict.home.viewAll} →
+        </a>
+      </div>
+      <div class="grid">
+        {featured.map((p) => <ProjectCard project={p} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

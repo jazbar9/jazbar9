@@ -1,0 +1,81 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const email = 'jazmina.sanz@gmail.com';
+
+const channels = [
+  {
+    label: dict.contact.email,
+    sub: email,
+    href: `mailto:${email}`,
+    icon: '@',
+    warm: false,
+  },
+  {
+    label: dict.contact.linkedin,
+    sub: 'linkedin.com/in/jazmina-s-23b45229',
+    href: 'https://www.linkedin.com/in/jazmina-s-23b45229',
+    icon: 'in',
+    warm: false,
+  },
+  {
+    label: dict.contact.github,
+    sub: 'github.com/jazbar9',
+    href: 'https://github.com/jazbar9',
+    icon: '<>',
+    warm: false,
+  },
+  {
+    label: dict.contact.huggingface,
+    sub: 'huggingface.co/jazbarr',
+    href: 'https://huggingface.co/jazbarr',
+    icon: 'hf',
+    warm: true,
+  },
+  {
+    label: dict.contact.hfOrg,
+    sub: 'huggingface.co/codigo-g6',
+    href: 'https://huggingface.co/codigo-g6',
+    icon: 'g6',
+    warm: true,
+  },
+];
+---
+
+<BaseLayout locale={locale} title={dict.contact.title} description={dict.contact.text}>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-sub mono"><span class="dot"></span>{dict.nav.contact}</div>
+          <h1 class="section-title">{dict.contact.title}</h1>
+          <p class="hero-sub" style="margin-top:.6rem">{dict.contact.text}</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        {
+          channels.map((c) => (
+            <a class={`contact-card${c.warm ? ' warm' : ''}`} href={c.href} target="_blank" rel="noopener noreferrer">
+              <div class="contact-icon">{c.icon}</div>
+              <div>
+                <div>{c.label}</div>
+                <small>{c.sub}</small>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <p class="pill" style="margin-top:2rem"><span class="dot"></span>{dict.contact.response}</p>
+    </div>
+  </section>
+</BaseLayout>

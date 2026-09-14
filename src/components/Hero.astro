@@ -1,0 +1,78 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+import type { Project } from '../lib/types';
+
+interface Props {
+  locale: Locale;
+  projects: Project[];
+}
+
+const { locale, projects } = Astro.props;
+const dict = t(locale);
+const githubCount = projects.filter((p) => p.source === 'github').length;
+const hfCount = projects.filter((p) => p.source === 'huggingface').length;
+const techCount = 12;
+
+const bars = [42, 61, 34, 78, 55, 92, 48, 66, 38, 84, 58, 71];
+---
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="kicker mono">
+        <span class="dot"></span>
+        {dict.hero.kicker}
+      </span>
+      <h1>
+        {dict.hero.titleStart}
+        <br />
+        <span class="gradient-text">{dict.hero.titleAccent}</span>
+      </h1>
+      <p class="hero-sub">{dict.hero.subtitle}</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href={getRelativeLocaleUrl(locale, 'projects')}>
+          {dict.hero.ctaProjects} →
+        </a>
+        <a class="btn btn-ghost" href={getRelativeLocaleUrl(locale, 'contact')}>
+          {dict.hero.ctaContact}
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="num">{projects.length}</div>
+          <div class="lbl">{dict.stats.projects}</div>
+        </div>
+        <div class="stat">
+          <div class="num">{hfCount}</div>
+          <div class="lbl">{dict.stats.hf}</div>
+        </div>
+        <div class="stat">
+          <div class="num">{techCount}</div>
+          <div class="lbl">{dict.stats.tech}</div>
+        </div>
+        <div class="stat">
+          <div class="num">{githubCount}</div>
+          <div class="lbl">GitHub</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-panel">
+      <div class="chart-head">
+        <span>skills_stack.json</span>
+        <span>live</span>
+      </div>
+      <div class="bars">
+        {bars.map((h) => <span style={`height:${h}%`}></span>)}
+      </div>
+      <div class="chart-foot">
+        <span>query_time: {new Date().toISOString().slice(0, 10)}</span>
+        <span>
+          status: <b>● ready</b>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

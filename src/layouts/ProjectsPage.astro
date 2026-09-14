@@ -1,0 +1,77 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { loadProjects } from '../lib/fetchProjects';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const projects = await loadProjects();
+const total = projects.length;
+---
+
+<BaseLayout locale={locale} title={dict.projects.title} description={dict.projects.subtitle}>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-sub mono"><span class="dot"></span>{dict.nav.projects}</div>
+          <h1 class="section-title">{dict.projects.title}</h1>
+          <p class="hero-sub" style="margin-top:.6rem">{dict.projects.subtitle}</p>
+        </div>
+        <span class="pill">{total} {dict.projects.count}</span>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all">{dict.projects.all}</button>
+        <button class="filter-btn" data-filter="github">GitHub</button>
+        <button class="filter-btn" data-filter="huggingface">Hugging Face</button>
+        <button class="filter-btn" data-filter="featured">{dict.projects.featured}</button>
+      </div>
+
+      <div class="grid" id="project-grid">
+        {projects.map((p) => <ProjectCard project={p} locale={locale} />)}
+      </div>
+
+      <div class="no-result" id="no-result" hidden={true}>
+        {dict.projects.empty}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const grid = document.getElementById('project-grid') as HTMLElement;
+  const filters = document.getElementById('filters') as HTMLElement;
+  const noResult = document.getElementById('no-result') as HTMLElement;
+  const cards = Array.from(grid.querySelectorAll<HTMLElement>('.card'));
+
+  function apply(filter: string) {
+    let visible = 0;
+    for (const card of cards) {
+      const source = card.dataset.source ?? '';
+      const featured = card.dataset.featured === 'true';
+      const show =
+        filter === 'all' ||
+        (filter === 'github' && source === 'github') ||
+        (filter === 'huggingface' && source === 'huggingface') ||
+        (filter === 'featured' && featured);
+      card.hidden = !show;
+      if (show) visible += 1;
+    }
+    noResult.hidden = visible > 0;
+  }
+
+  filters.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('button');
+    if (!btn) return;
+    filters.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    apply(btn.dataset.filter ?? 'all');
+  });
+</script>

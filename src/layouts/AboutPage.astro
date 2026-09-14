@@ -1,0 +1,72 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<BaseLayout locale={locale} title={dict.about.title} description={dict.about.intro}>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-sub mono"><span class="dot"></span>{dict.about.title}</div>
+          <h1 class="section-title">{dict.about.title}</h1>
+        </div>
+      </div>
+
+      <p class="hero-sub" style="max-width:52rem">{dict.about.intro}</p>
+
+      <h2 class="section-title" style="font-size:1.35rem;margin-top:2.5rem">{dict.about.skillsHead}</h2>
+      <div class="stack">
+        {Object.values(dict.about.skills).map((cat) => (
+          <div class="stack-cat">
+            <h4>{cat.title}</h4>
+            <ul>
+              {cat.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="section-title" style="font-size:1.35rem;margin-top:3rem">{dict.about.journeyTitle}</h2>
+      <ul class="journey" style="margin-top:1.2rem">
+        {dict.about.journey.map((step) => <li>{step}</li>)}
+      </ul>
+
+      <h2 class="section-title" style="font-size:1.35rem;margin-top:3rem">{dict.about.expTitle}</h2>
+      <div class="timeline" style="margin-top:1.2rem">
+        {dict.about.experience.map((exp) => (
+          <article class="tl-item">
+            <div class="tl-head">
+              <h3 class="tl-role">{exp.role}</h3>
+              <span class="tl-period">{exp.period}</span>
+            </div>
+            <p class="tl-sub">{exp.company} · {exp.location}</p>
+            <p class="tl-summary">{exp.summary}</p>
+            <ul class="tl-bullets">
+              {exp.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <div class="stack">
+        <div class="stack-cat" style="grid-column:1/-1;margin-top:1rem">
+          <h4>{dict.about.ctaTitle}</h4>
+          <p class="card-slogan">{dict.about.ctaText}</p>
+          <a class="btn btn-primary" style="margin-top:.9rem" href={getRelativeLocaleUrl(locale, 'contact')}>
+            {dict.about.ctaButton} →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

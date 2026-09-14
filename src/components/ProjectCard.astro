@@ -1,0 +1,60 @@
+---
+import type { Project } from '../lib/types';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+
+interface Props {
+  project: Project;
+  locale: Locale;
+}
+
+const { project, locale } = Astro.props;
+const dict = t(locale);
+
+function formatMetric(n: number | undefined): string {
+  if (!n || n === 0) return '';
+  if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
+  return String(n);
+}
+
+const metric = project.source === 'huggingface' ? formatMetric(project.downloads) : formatMetric(project.stars);
+const metricLabel = project.source === 'huggingface' ? 'downloads' : 'stars';
+---
+
+<article class="card" data-source={project.source} data-featured={project.featured ? 'true' : 'false'}>
+  <div class="card-top">
+    <span class="src-badge badge">{project.source === 'huggingface' ? 'HF' : 'GH'}</span>
+    {project.featured && <span class="badge badge-featured">{dict.projects.featured}</span>}
+  </div>
+
+  <div>
+    <h3>{project.title}</h3>
+    <p class="card-slogan">{project.slogan}</p>
+  </div>
+
+  <p class="card-desc">{project.description}</p>
+
+  {
+    project.tags.length > 0 && (
+      <div class="card-tags">
+        {project.tags.map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+    )
+  }
+
+  <div class="card-foot">
+    <span>
+      {metric ? `${metric} ${metricLabel}` : (project.language ?? project.source)}
+    </span>
+    <div class="card-actions">
+      <a href={project.url} target="_blank" rel="noopener noreferrer">
+        {dict.projects.viewCode}
+      </a>
+      {project.demoUrl && (
+        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+          {dict.projects.viewDemo}
+        </a>
+      )}
+    </div>
+  </div>
+</article>

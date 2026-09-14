@@ -1,0 +1,49 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+
+interface Props {
+  currentPath: string;
+  locale: Locale;
+}
+
+const { currentPath, locale } = Astro.props;
+const dict = t(locale);
+const other: Locale = locale === 'en' ? 'es' : 'en';
+
+const links = [
+  { to: getRelativeLocaleUrl(locale, ''), label: dict.nav.home },
+  { to: getRelativeLocaleUrl(locale, 'projects'), label: dict.nav.projects },
+  { to: getRelativeLocaleUrl(locale, 'about'), label: dict.nav.about },
+  { to: getRelativeLocaleUrl(locale, 'contact'), label: dict.nav.contact },
+];
+
+const basePath = (import.meta.env.BASE_URL as string).replace(/\/+$/, '') || '';
+const rel = (currentPath.replace(basePath, '') || '/');
+const isSpanish = rel.startsWith('/es');
+const target = (isSpanish ? rel.replace(/^\/es/, '') : `/es${rel}`) || '/';
+const otherHref = `${basePath}${target.endsWith('/') || target === '' ? target : `${target}/`}` || '/';
+---
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href={getRelativeLocaleUrl(locale, '')}>
+      Jazmina Sanz
+    </a>
+    <nav class="nav-links">
+      {
+        links.map((l) => (
+          <a href={l.to} aria-current={currentPath === l.to ? 'page' : undefined}>
+            {l.label}
+          </a>
+        ))
+      }
+      <div class="lang-switch">
+        <a href={otherHref} aria-label="Switch language">
+          {other.toUpperCase()}
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
