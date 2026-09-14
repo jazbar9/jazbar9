@@ -128,7 +128,7 @@ export const translations = {
         },
         {
           role: 'Freelance Full Digitalization',
-          company: 'JAZVI S.A.C.',
+          company: 'Restaurant client (F&B)',
           location: 'Peru',
           period: '07/2022 – Present',
           summary: 'Digitalized order-taking, cash, inventory and invoicing for a restaurant-bar.',
@@ -212,7 +212,7 @@ export const translations = {
     about: {
       title: 'Sobre mí',
       intro:
-        'Analista de DAtos enfocada en convertir enfocada en convertir datos reales y desordenados en decisiones: desde transacciones POS de retail hasta ingresos de e-commerce y analítica de streamers.',
+        'Analista de Datos enfocada en convertir enfocada en convertir datos reales y desordenados en decisiones: desde transacciones POS de retail hasta ingresos de e-commerce y analítica de streamers.',
       skillsHead: 'Habilidades',
       skills: {
         data: { title: 'Ingeniería de datos', bullets: ['Python · Pandas', 'Pipelines ETL', 'SQL'] },
